@@ -1,0 +1,45 @@
+{
+  "models": {
+    "mling": {
+      "repo_id": "Tanor/serbian-wsd-distilled-mling",
+      "base_model": "intfloat/multilingual-e5-large",
+      "license": "mit",
+      "license_file": "MIT.txt",
+      "text_prefix": "query: ",
+      "normalize_embeddings": true,
+      "best_epoch": 7,
+      "batch_size": 4,
+      "correct": 1394,
+      "raw_correct": 1138,
+      "base_card_revision_checked": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3"
+    },
+    "simple": {
+      "repo_id": "Tanor/serbian-wsd-distilled-simple",
+      "base_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "license": "apache-2.0",
+      "license_file": "Apache-2.0.txt",
+      "text_prefix": "",
+      "normalize_embeddings": false,
+      "best_epoch": 5,
+      "batch_size": 32,
+      "correct": 1315,
+      "raw_correct": 1045,
+      "base_card_revision_checked": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    },
+    "tesla": {
+      "repo_id": "Tanor/serbian-wsd-distilled-tesla",
+      "base_model": "te-sla/TeslaXLM",
+      "license": "cc-by-sa-4.0",
+      "license_file": "CC-BY-SA-4.0.txt",
+      "text_prefix": "",
+      "normalize_embeddings": false,
+      "best_epoch": 4,
+      "batch_size": 16,
+      "correct": 986,
+      "raw_correct": 1026,
+      "base_card_revision_checked": "07d38e855787315abd29c4dc61c1653d5f34d714"
+    }
+  },
+  "verified_base_cards_on": "2026-09-25",
+  "released_models": {}
+}

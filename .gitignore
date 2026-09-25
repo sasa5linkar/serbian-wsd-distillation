@@ -11,3 +11,5 @@ outputs/
 models/
 data/
 .env
+
+model_packages/
