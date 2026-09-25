@@ -1,0 +1,4 @@
+model,n01_fixed,n10_worsened,net_gain,holm_p
+simple,425,155,270,1.97e-29
+tesla,232,272,-40,8.22e-02
+mling,435,179,256,4.51e-25

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite this software when using the implementation. See README for related research."
+type: software
+title: "Serbian WSD Distillation"
+authors:
+  - family-names: Petalinkar
+    given-names: Saša
+version: 0.1.0
+date-released: 2026-09-25
+license: Apache-2.0
+repository-code: "https://github.com/sasa5linkar/serbian-wsd-distillation"
+url: "https://github.com/sasa5linkar/serbian-wsd-distillation"

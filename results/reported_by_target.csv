@@ -1,0 +1,7 @@
+model,target_type,total,raw_correct,trained_correct,fixed,worsened
+simple,single_word,1734,877,1144,414,147
+simple,mwe,187,168,171,11,8
+tesla,single_word,1734,865,819,219,265
+tesla,mwe,187,161,167,13,7
+mling,single_word,1734,971,1221,423,173
+mling,mwe,187,167,173,12,6

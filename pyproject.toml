@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lexisense-wsd-distillation"
+version = "0.1.0"
+description = "SentenceTransformer distillation pipeline for Serbian LexiSense WSD."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Saša Petalinkar"}]
+dependencies = [
+    "pandas>=2.0.0",
+    "openpyxl>=3.0.10",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+train = [
+    "accelerate>=1.1.0",
+    "certifi>=2024.0.0",
+    "datasets>=2.14.0",
+    "sentence-transformers>=3.0.1",
+    "torch>=2.0.0",
+]
+dev = [
+    "pytest>=7.4.0",
+]
+
+[project.scripts]
+lexisense-distill = "lexisense_distill.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lexisense_distill"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[project.urls]
+Repository = "https://github.com/sasa5linkar/serbian-wsd-distillation"
+Issues = "https://github.com/sasa5linkar/serbian-wsd-distillation/issues"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "examples", "configs", "results", "docs", "scripts", "README.md", "LICENSE", "NOTICE", "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]

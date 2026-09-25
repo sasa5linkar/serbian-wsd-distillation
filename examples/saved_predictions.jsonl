@@ -1,0 +1,4 @@
+{"sentence":"Program je završen.","target":"Program","gold_sense_id":"DEMO-event","ranked_sense_ids":["DEMO-event","DEMO-software"],"covered":true}
+{"sentence":"Program je ažuriran.","target":"Program","gold_sense_id":"DEMO-software","ranked_sense_ids":["DEMO-event","DEMO-software"],"covered":true}
+{"sentence":"Program radi.","target":"Program","gold_sense_id":"DEMO-software","ranked_sense_ids":["DEMO-software"],"covered":true}
+{"sentence":"Nepoznata reč.","target":"reč","gold_sense_id":"DEMO-missing","ranked_sense_ids":[],"covered":false}

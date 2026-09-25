@@ -1,0 +1,42 @@
+{
+  "scope": "Reported WSD distillation settings for dissertation section 5.8",
+  "evaluation": {
+    "dev_sentence_ids": "0001–0120",
+    "final_sentence_ids": "0301–0600",
+    "final_targets": 1921,
+    "single_word_targets": 1734,
+    "mwe_targets": 187,
+    "trained_covered_targets": 1894,
+    "strict_denominator": 1921,
+    "training_exclusion": "All gold sentence texts"
+  },
+  "presets": [
+    {
+      "name": "simple",
+      "model_name": "all-MiniLM-L6-v2",
+      "text_prefix": "",
+      "normalize_embeddings": false,
+      "batch_size": 32,
+      "best_epoch": 5,
+      "dev_top1_accuracy": 0.5349
+    },
+    {
+      "name": "tesla",
+      "model_name": "te-sla/TeslaXLM",
+      "text_prefix": "",
+      "normalize_embeddings": false,
+      "batch_size": 16,
+      "best_epoch": 4,
+      "dev_top1_accuracy": 0.4118
+    },
+    {
+      "name": "mling",
+      "model_name": "intfloat/multilingual-e5-large",
+      "text_prefix": "query: ",
+      "normalize_embeddings": true,
+      "batch_size": 4,
+      "best_epoch": 7,
+      "dev_top1_accuracy": 0.5464
+    }
+  ]
+}

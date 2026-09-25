@@ -1,0 +1,14 @@
+#FORMAT=WebAnno TSV 3.3
+#T_SP=webanno.custom.WSD|Comment|Explanation|KBid|NumberOfSenses|Origine|Possible
+
+#Text=Program je počeo.
+1-1	0-7	Program	N	NOUN	_	_	program	_	_	_	*	synthetic	DEMO-event	2	DEMO	DEMO-event;DEMO-software
+
+#Text=Program se pokrenuo.
+2-1	0-7	Program	N	NOUN	_	_	program	_	_	_	*	synthetic	DEMO-software	2	DEMO	DEMO-event;DEMO-software
+
+#Text=Program je završen.
+3-1	0-7	Program	N	NOUN	_	_	program	_	_	_	*	synthetic	DEMO-event	2	DEMO	DEMO-event;DEMO-software
+
+#Text=Program je ažuriran.
+4-1	0-7	Program	N	NOUN	_	_	program	_	_	_	*	synthetic	DEMO-software	2	DEMO	DEMO-event;DEMO-software
