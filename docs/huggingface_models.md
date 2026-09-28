@@ -30,6 +30,10 @@ hf download Tanor/serbian-wsd-distilled-teslaxlm --revision c907e07a488205ad6c57
 
 Each command downloads a complete local checkpoint. The local directory names retain the experiment presets even though the Hub names describe the base models. Model-specific Python examples, training settings, reported results, and citations are on the linked model cards. For `mling`, preserve the exact `query: ` prefix on both contexts and definitions; loading the SentenceTransformer alone does not add it.
 
+## Optional runnable example
+
+[examples/load_hf_wsd.py](../examples/load_hf_wsd.py) selects any of the three pinned releases, reads its saved prefix, and ranks two illustrative definitions. See the [example commands and model choices](../README.md#optional-hugging-face-example). It works with cached/local files by default; `--download` explicitly enables fetching a model. `--download-only` prepares a checkpoint for the existing application without running inference.
+
 ## Companion applications
 
 - The [sentiment toolkit](https://github.com/sasa5linkar/serbian-wordnet-sentiment-toolkit/blob/main/docs/model-resources.md) documents an explicit E5 download into its default local resource directory and reads the saved prefix. Its lightweight example works without downloading weights.
