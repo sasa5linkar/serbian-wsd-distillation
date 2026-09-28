@@ -66,7 +66,7 @@ Both commands write metrics, predictions and errors. The existing `top1_accuracy
 | tesla | 1,026 | 986 | 51.3% |
 | mling | 1,138 | 1,394 | 72.6% |
 
-[configs/reported_experiment.json](configs/reported_experiment.json) stores the reported settings. [results](results/README.md) contains exported summary tables; these are separate from the toy example. Trained checkpoints are not bundled in this release. Training and inference accept local model directories. The [Hugging Face guide](docs/huggingface_models.md) provides model-card templates and a resumable packaging/upload helper for the selected final checkpoints. The 24 sentiment classifiers linked below perform polarity classification and are not these WSD rankers.
+[configs/reported_experiment.json](configs/reported_experiment.json) stores the reported settings. [results](results/README.md) contains exported summary tables; these are separate from the toy example. Trained checkpoints are not bundled in this release. Training and inference accept local model directories. The released weights are public as [E5 Large / mling](https://huggingface.co/Tanor/serbian-wsd-distilled-e5-large), [MiniLM / simple](https://huggingface.co/Tanor/serbian-wsd-distilled-minilm), and [TeslaXLM / tesla](https://huggingface.co/Tanor/serbian-wsd-distilled-teslaxlm). The [Hugging Face guide](docs/huggingface_models.md) provides pinned downloads, model cards, sizes, and licenses. The 24 sentiment classifiers linked below perform polarity classification and are not these WSD rankers.
 
 ## Citation and license
 

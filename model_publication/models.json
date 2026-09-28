@@ -1,7 +1,7 @@
 {
   "models": {
     "mling": {
-      "repo_id": "Tanor/serbian-wsd-distilled-mling",
+      "repo_id": "Tanor/serbian-wsd-distilled-e5-large",
       "base_model": "intfloat/multilingual-e5-large",
       "license": "mit",
       "license_file": "MIT.txt",
@@ -14,7 +14,7 @@
       "base_card_revision_checked": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3"
     },
     "simple": {
-      "repo_id": "Tanor/serbian-wsd-distilled-simple",
+      "repo_id": "Tanor/serbian-wsd-distilled-minilm",
       "base_model": "sentence-transformers/all-MiniLM-L6-v2",
       "license": "apache-2.0",
       "license_file": "Apache-2.0.txt",
@@ -27,7 +27,7 @@
       "base_card_revision_checked": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
     },
     "tesla": {
-      "repo_id": "Tanor/serbian-wsd-distilled-tesla",
+      "repo_id": "Tanor/serbian-wsd-distilled-teslaxlm",
       "base_model": "te-sla/TeslaXLM",
       "license": "cc-by-sa-4.0",
       "license_file": "CC-BY-SA-4.0.txt",
@@ -41,5 +41,33 @@
     }
   },
   "verified_base_cards_on": "2026-09-25",
-  "released_models": {}
+  "released_models": {
+    "mling": {
+      "repo_id": "Tanor/serbian-wsd-distilled-e5-large",
+      "revision": "749f694999b256039011acfb8f0a4b1b4f388c8c",
+      "weight_file": "model.safetensors",
+      "weight_size_bytes": 2239607176,
+      "weight_sha256": "dc0cff1db0f5bf5072bf89b82b00b81cc30893d073914c8ce1d9b1f31a3b6b36",
+      "license": "mit",
+      "verified_public_on": "2026-09-28"
+    },
+    "simple": {
+      "repo_id": "Tanor/serbian-wsd-distilled-minilm",
+      "revision": "4a08bf97fa51d769ab2cbfa64dc522e005b12337",
+      "weight_file": "model.safetensors",
+      "weight_size_bytes": 90864192,
+      "weight_sha256": "d6c1624774330b2ef392d90c9b0dbf9b9ccaf5a3a60cf645fa9385ca7f3c475d",
+      "license": "apache-2.0",
+      "verified_public_on": "2026-09-28"
+    },
+    "tesla": {
+      "repo_id": "Tanor/serbian-wsd-distilled-teslaxlm",
+      "revision": "c907e07a488205ad6c5779b5d7211cddec08d8f6",
+      "weight_file": "model.safetensors",
+      "weight_size_bytes": 2239607176,
+      "weight_sha256": "9ee4d9cd61b6b1b8e0de68bb64f88c84bcaf90d2ad4c70956025bd0a7134aa34",
+      "license": "cc-by-sa-4.0",
+      "verified_public_on": "2026-09-28"
+    }
+  }
 }

@@ -1,46 +1,44 @@
-# WSD model publication and download
+# Published WSD models and downloads
 
-The public software and reported results are available. The distilled checkpoint weights are **not yet released**. This page provides the procedure to publish existing final checkpoints; no model is retrained. The 24 polarity classifiers linked from the sentiment lexicon project are different models.
+All three distilled WSD checkpoints are public on Hugging Face. The names below are the actual model repositories; `mling`, `simple`, and `tesla` remain the experiment preset names. These rankers are separate from the 24 sentiment polarity classifiers.
 
-| Preset | Planned Hub repository | Base | Weight license |
-|---|---|---|---|
-| mling | `Tanor/serbian-wsd-distilled-mling` | [multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large) | MIT |
-| simple | `Tanor/serbian-wsd-distilled-simple` | [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | Apache-2.0 |
-| tesla | `Tanor/serbian-wsd-distilled-tesla` | [TeslaXLM](https://huggingface.co/te-sla/TeslaXLM) | CC BY-SA 4.0 |
+| Experiment preset | Public model | Weight file | License |
+|---|---|---:|---|
+| `mling` | [Tanor/serbian-wsd-distilled-e5-large](https://huggingface.co/Tanor/serbian-wsd-distilled-e5-large) | 2239.61 MB | MIT |
+| `simple` | [Tanor/serbian-wsd-distilled-minilm](https://huggingface.co/Tanor/serbian-wsd-distilled-minilm) | 90.86 MB | Apache-2.0 |
+| `tesla` | [Tanor/serbian-wsd-distilled-teslaxlm](https://huggingface.co/Tanor/serbian-wsd-distilled-teslaxlm) | 2239.61 MB | CC BY-SA 4.0 |
 
-These names are publication targets, not working download links. [model_publication](../model_publication) holds card templates, license texts and reported settings. The base-card revisions in the manifest record a license check, not historical training revisions.
+Sizes are for the weight file only, in decimal MB; tokenizer and configuration files add to each download. Model repositories include their own licenses and upstream notices. Apache-2.0 for this software does not replace the model licenses.
 
-## On the computer holding the trained checkpoints
+## Download a released revision
 
-Use selected final directories (usually `models/wsd-distilled-<preset>-best`), with their saved tokenizer, SentenceTransformer modules and `training_config.json`. Do not substitute an untrained base-model cache. Create a local environment with the training dependencies and HF CLI:
+The revisions below were checked on 2026-09-28 and include the model cards updated that day.
 
-~~~bash
-uv sync --extra train --extra dev
-uv run --extra train --with huggingface_hub hf auth login
-uv run --extra train --with huggingface_hub python scripts/publish_wsd_model.py prepare --preset mling --source models/wsd-distilled-mling-best --destination model_packages/mling
-uv run --extra train --with huggingface_hub python scripts/publish_wsd_model.py verify --source models/wsd-distilled-mling-best --package model_packages/mling
-uv run --extra train --with huggingface_hub python scripts/publish_wsd_model.py upload --package model_packages/mling
-uv run --extra train --with huggingface_hub python scripts/publish_wsd_model.py publish --package model_packages/mling
-~~~
+| Preset | Pinned revision |
+|---|---|
+| `mling` | [`749f694999b256039011acfb8f0a4b1b4f388c8c`](https://huggingface.co/Tanor/serbian-wsd-distilled-e5-large/tree/749f694999b256039011acfb8f0a4b1b4f388c8c) |
+| `simple` | [`4a08bf97fa51d769ab2cbfa64dc522e005b12337`](https://huggingface.co/Tanor/serbian-wsd-distilled-minilm/tree/4a08bf97fa51d769ab2cbfa64dc522e005b12337) |
+| `tesla` | [`c907e07a488205ad6c5779b5d7211cddec08d8f6`](https://huggingface.co/Tanor/serbian-wsd-distilled-teslaxlm/tree/c907e07a488205ad6c5779b5d7211cddec08d8f6) |
 
-Repeat with `simple` and `tesla` when available. Authentication must identify Tanor and allow repository writes. Keep credentials out of files and command arguments.
-
-`prepare` copies runtime files into a new directory, excludes training corpora/optimizer state/other epochs, records sizes and SHA-256 hashes, preserves upstream notices and removes local training paths from exported metadata. Source files are never modified. Inspect the selected checkpoint and card before upload.
-
-`verify` compares source and packaged embeddings and candidate ordering on fixed Serbian inputs, including a multiword expression and a long input. It is a packaging check, not a new benchmark.
-
-`upload` uses `hf upload-large-folder` in a private repository. Re-run the same upload after an interruption. `publish` downloads the exact uploaded revision, compares files and embeddings, creates `v1.0` and then makes the repository public. It writes a publication receipt beside the package. The procedure creates no paid endpoint or training job. See the [official upload guide](https://huggingface.co/docs/huggingface_hub/guides/upload).
-
-## Download a published revision
-
-After publication, use the exact `repo_id` and `revision` from the receipt:
+With the Hugging Face CLI installed, download the model you need:
 
 ~~~bash
-hf download REPO_ID --revision COMMIT_SHA --local-dir models/wsd-distilled-mling
+hf download Tanor/serbian-wsd-distilled-e5-large --revision 749f694999b256039011acfb8f0a4b1b4f388c8c --local-dir models/wsd-distilled-mling
+hf download Tanor/serbian-wsd-distilled-minilm --revision 4a08bf97fa51d769ab2cbfa64dc522e005b12337 --local-dir models/wsd-distilled-simple
+hf download Tanor/serbian-wsd-distilled-teslaxlm --revision c907e07a488205ad6c5779b5d7211cddec08d8f6 --local-dir models/wsd-distilled-tesla
 ~~~
 
-Replace both placeholders with receipt values. Local inference consumes that directory. The [sentiment toolkit](https://github.com/sasa5linkar/serbian-wordnet-sentiment-toolkit) reads the saved mling `query: ` prefix and sequence length. Its lightweight example works before checkpoint publication.
+Each command downloads a complete local checkpoint. The local directory names retain the experiment presets even though the Hub names describe the base models. Model-specific Python examples, training settings, reported results, and citations are on the linked model cards. For `mling`, preserve the exact `query: ` prefix on both contexts and definitions; loading the SentenceTransformer alone does not add it.
 
-## After publication
+## Companion applications
 
-Add each receipt to `model_publication/releases/`, record its ID and revision in `model_publication/models.json` under `released_models`, and replace the planned entry above with its public link. Add the same pinned download to the sentiment evaluation and toolkit documentation. Do not mark a model released before its upload verification succeeds.
+- The [sentiment toolkit](https://github.com/sasa5linkar/serbian-wordnet-sentiment-toolkit/blob/main/docs/model-resources.md) documents an explicit E5 download into its default local resource directory and reads the saved prefix. Its lightweight example works without downloading weights.
+- The [sentiment research evaluator](https://github.com/sasa5linkar/serbian-sentiment-wsd-evaluation#wsd-checkpoint-publication) accepts a complete local checkpoint directory and an external sense inventory.
+
+The cards retain the dissertation results separately from the small CPU loading checks recorded during model publication on 2026-09-27. Those checks do not rerun the full historical evaluation. The TeslaXLM card retains the reported lack of improvement after distillation.
+
+## Release records and maintenance
+
+[model_publication/models.json](../model_publication/models.json) maps presets to public IDs, pinned revisions, weight sizes, and hashes. [model_publication/cards](../model_publication/cards) mirrors the current model-card text with absolute links to the packaged metadata. The base-card revisions in the manifest record a license check, not historical training revisions.
+
+The existing [packaging helper](../scripts/publish_wsd_model.py) is retained for preparing separate checkpoint packages. Its upload/publish steps require a private staging repository and refuse to overwrite these already-public releases. No repackaging or training is needed to use the published models. Cards describe these specific checkpoints and must be reviewed before reuse for any different weights.
